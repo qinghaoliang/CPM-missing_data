@@ -1,5 +1,8 @@
 # Connectome-based Predictive Modeling with Missing Data 
-Our manuscript is available on bioRxiv https://www.biorxiv.org/content/10.1101/2023.06.09.544392v1.full.pdf and published at Imaging Neuroscience https://direct.mit.edu/imag/article/doi/10.1162/imag_a_00071/118937/Rescuing-missing-data-in-connectome-based?utm_term=&utm_campaign=&utm_source=adwords&utm_medium=ppc&hsa_acc=4298009839&hsa_cam=20485121991&hsa_grp=153323141712&hsa_ad=671196874738&hsa_src=g&hsa_tgt=dsa-2189678350017&hsa_kw=&hsa_mt=&hsa_net=adwords&hsa_ver=3&gad_source=1&gclid=CjwKCAiAtt2tBhBDEiwALZuhAADnfzje3gv8v7VwWvOXvQWDzSkWgQ32SboQBfZT0XbuT9yTEzDBiBoCKRsQAvD_BwE
+Our manuscript is available on bioRxiv https://www.biorxiv.org/content/10.1101/2023.06.09.544392v1.full.pdf and published at Imaging Neuroscience https://direct.mit.edu/imag/article/doi/10.1162/imag_a_00071/118937
+
+## Method
+![Predictive modeling framework for handling missing data. Missing connectomes are rescued using 1) Task average replacement, 2) Mean imputation, 3) Constant value imputation, 4) Robust Matrix Completion, or 5) Nearest Neighbors imputation. Missing phenotypic measures are imputed with auxiliary variables using 1) Predictive mean matching (PMM), 2) ImputePCA, 3) MissForest, or 4) Mean imputation. The phenotypic and connectivity data are then used in standardized predictive models such as ridge regression or support vector machine. The black squares represent missing data.](./imp_flow.png)
 
 ## Dependencies
 Missing Connectome (Python)
