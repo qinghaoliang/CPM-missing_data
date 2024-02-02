@@ -7,26 +7,26 @@ from sklearn.metrics import r2_score, roc_auc_score
 from mats2edges import mats2edges
 from Imputation import impute_coms
 
-#################################################################
-# CPM impute data at connectomes level
-# Input:
-# all_mats_ic: connectomes of incomplete subjects
-# all_behav_ic: phenotype of incomplete subjects
-# all_edges: edges of complete subjects
-# all_behav: phenotype of complete subjects
-# seed: random number for cross-validation data split
-# method: 1) mean_task: replace missing connectomes using task average
-#         2) mean_sub: replace missing connectomes using subject average   
-# thresh: feature selection threshold, p-value
-# alphas_ridge: ridge regression parameters 
-#
-# Output: 
-# Rcv for regression. Roc_auc for classifciation
+"""CPM impute data at connectomes level
+Input:
+all_mats_ic: connectomes of incomplete subjects
+all_behav_ic: phenotype of incomplete subjects
+all_edges: edges of complete subjects
+all_behav: phenotype of complete subjects
+seed: random number for cross-validation data split
+method: 1) mean_task: replace missing connectomes using task average
+        2) mean_sub: replace missing connectomes using subject average   
+thresh: feature selection threshold, p-value
+alphas_ridge: ridge regression parameters 
+
+Output: 
+Rcv for regression. Roc_auc for classifciation
+"""
  
 def cpm_imp_coms(all_mats_ic, all_behav_ic, all_edges, all_behav, seed, 
             method = "mean_task", thresh=0.1, 
             alphas_ridge=10**np.linspace(3, -10, 50)):
-    ############### linear/ridge regression ################
+    """linear/ridge regression"""
 
     # all_behav should be array of size (n,)
     n_splits = 10
@@ -89,7 +89,7 @@ def cpm_imp_coms(all_mats_ic, all_behav_ic, all_edges, all_behav, seed,
 
 def cpm_imp_coms_clf(all_mats_ic, all_behav_ic, all_edges, all_behav, seed, 
             method = "mean_task", thresh=0.1):
-    ############### svc classicification ################
+    """svc classicification"""
 
     # all_behav should be array of size (n,)
     n_splits = 10

@@ -6,28 +6,28 @@ from sklearn.model_selection import GridSearchCV, KFold
 from sklearn.metrics import r2_score, roc_auc_score
 from RobustMC import RMC_l1, RMC_l2
 
-#################################################################
-# CPM impute data at connectomes level
-# Input:
-# all_mats_ic: connectomes of incomplete subjects
-# all_behav_ic: phenotype of incomplete subjects
-# all_edges: edges of complete subjects
-# all_behav: phenotype of complete subjects
-# seed: random number for cross-validation data split
-# penalty: 1) l1: regularized with l1 norm, the solution will be sparse
-#          2) l2: regularized with l2 norm, the solution will be dense 
-# lambda_1: weight of regularization on the training set
-# lambda_2: weight of regularization on the test set 
-# thresh: feature selection threshold, p-value
-# alphas_ridge: ridge regression parameters 
-#
-# Output: 
-# Rcv for regression. Roc_auc for classifciation
+"""CPM impute data at connectomes level
+Input:
+all_mats_ic: connectomes of incomplete subjects
+all_behav_ic: phenotype of incomplete subjects
+all_edges: edges of complete subjects
+all_behav: phenotype of complete subjects
+seed: random number for cross-validation data split
+penalty: 1) l1: regularized with l1 norm, the solution will be sparse
+         2) l2: regularized with l2 norm, the solution will be dense 
+lambda_1: weight of regularization on the training set
+lambda_2: weight of regularization on the test set 
+thresh: feature selection threshold, p-value
+alphas_ridge: ridge regression parameters 
+
+Output: 
+Rcv for regression. Roc_auc for classifciation
+"""
 
 def cpm_mc(all_edges_ic, all_behav_ic, all_edges, all_behav, seed,
             penalty="l2", lambda_1=0.25, lambda_2=0.15, thresh=0.1,
             alphas_ridge=10**np.linspace(3, -10, 50)):
-    ############### linear/ridge regression ################
+    """linear/ridge regression"""
 
     # all_behav should be array of size (n,)
     n_splits = 10
@@ -88,7 +88,7 @@ def cpm_mc(all_edges_ic, all_behav_ic, all_edges, all_behav, seed,
 
 def cpm_mc_clf(all_edges_ic, all_behav_ic, all_edges, all_behav, seed,
             penalty="l2", lambda_1=0.25, lambda_2=0.15, thresh=0.1):
-    ############### svc classicification ################
+    """svc classicification"""
 
     # all_behav should be array of size (n,)
     n_splits = 10

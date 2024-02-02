@@ -2,9 +2,7 @@ import numpy as np
 import copy
 import time
 
-####################################################
-#############  Robust Matrix Completion  ###########
-####################################################
+"""Robust Matrix Completion"""
 
 def converge(pr, dr, ep, ed):
     #print('pr = %f' % pr)

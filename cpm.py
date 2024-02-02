@@ -4,22 +4,22 @@ from sklearn.svm import LinearSVC
 from sklearn.linear_model import LinearRegression, Ridge
 from sklearn.model_selection import GridSearchCV, KFold
 from sklearn.metrics import r2_score, roc_auc_score
+                                                                                                                             
+"""CPM with complete data
+Input:
+all_edges: edges of complete subjects
+all_behav: phenotype of complete subjects
+seed: random number for cross-validation data split 
+thresh: feature selection threshold, p-value
+alphas_ridge: ridge regression parameters
 
-#######################################                                                                                                                                         v##########################
-# CPM with complete data
-# Input:
-# all_edges: edges of complete subjects
-# all_behav: phenotype of complete subjects
-# seed: random number for cross-validation data split 
-# thresh: feature selection threshold, p-value
-# alphas_ridge: ridge regression parameters
-#
-# Output: 
-# Rcv for regression. Roc_auc for classifciation
+Output: 
+Rcv for regression. Roc_auc for classifciation
+"""
 
 def cpm(all_edges, all_behav, seed, thresh=0.1, 
         alphas_ridge=10**np.linspace(3, -10, 50)):
-    ############### linear/ridge regression ################
+    """linear/ridge regression"""
 
     # all_behav should be array of size (n,)
     n_splits = 10
@@ -69,7 +69,7 @@ def cpm(all_edges, all_behav, seed, thresh=0.1,
 
 
 def cpm_clf(all_edges, all_behav, seed, thresh=0.1):
-    ############### svc classicification ################
+    """svc classicification"""
 
     # all_behav should be array of size (n,)
     n_splits = 10

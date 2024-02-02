@@ -1,8 +1,7 @@
 import numpy as np
 from sklearn.impute import SimpleImputer, KNNImputer
-#################################################################
-############## Imputation methods implementation ################
-#################################################################
+
+"""Imputation methods implementation"""
 
 # the missing data is encoded as 0, it is better to encode as nan
 

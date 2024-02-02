@@ -6,27 +6,28 @@ from sklearn.model_selection import GridSearchCV, KFold
 from sklearn.metrics import r2_score, roc_auc_score
 from Imputation import impute_edges
 
-#################################################################
-# CPM impute data at edge level
-# Input:
-# all_edges_ic: edges of incomplete subjects
-# all_behav_ic: phenotype of incomplete subjects
-# all_edges: edges of complete subjects
-# all_behav: phenotype of complete subjects
-# seed: random number for cross-validation data split
-# method: 1) knn: impute missing values using k nearest neighbor (across subjects)
-#         2) mean: impute missing values using mean values
-#         3) const: impute missing values using a constant value  
-# thresh: feature selection threshold, p-value
-# alphas_ridge: ridge regression parameters 
-#
-# Output: 
-# Rcv for regression. Roc_auc for classifciation
+
+"""CPM impute data at edge level
+Input:
+all_edges_ic: edges of incomplete subjects
+all_behav_ic: phenotype of incomplete subjects
+all_edges: edges of complete subjects
+all_behav: phenotype of complete subjects
+seed: random number for cross-validation data split
+method: 1) knn: impute missing values using k nearest neighbor (across subjects)
+        2) mean: impute missing values using mean values
+        3) const: impute missing values using a constant value  
+thresh: feature selection threshold, p-value
+alphas_ridge: ridge regression parameters 
+
+Output: 
+Rcv for regression. Roc_auc for classifciation
+"""
 
 def cpm_imp(all_edges_ic, all_behav_ic, all_edges, all_behav, seed, method="knn",
             n_neighbors=5, weights="uniform", thresh=0.1, 
             alphas_ridge=10**np.linspace(3, -10, 50)):
-    ############### linear/ridge regression ################
+    """linear/ridge regression"""
 
     # all_behav should be array of size (n,)
     n_splits = 10
@@ -82,7 +83,7 @@ def cpm_imp(all_edges_ic, all_behav_ic, all_edges, all_behav, seed, method="knn"
 
 def cpm_imp_clf(all_edges_ic, all_behav_ic, all_edges, all_behav, seed, method="knn",
             n_neighbors=5, weights="uniform", thresh=0.1):
-    ############### svc classicification ################
+    """svc classicification"""
 
     # all_behav should be array of size (n,)
     n_splits = 10
